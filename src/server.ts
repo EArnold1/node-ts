@@ -16,4 +16,4 @@ app.get('/', (req: Request, res: Response) => {
 
 const PORT = 5000;
 
-app.listen(PORT);
+app.listen(PORT,()=>console.log('App running'));

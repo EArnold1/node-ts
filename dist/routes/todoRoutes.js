@@ -10,7 +10,7 @@ router.post('/', todoFunc_1.createTodo);
 //Route POST todo/
 //@desc add todo
 //access public
-router.get('/', (req, res) => { });
+router.get('/', todoFunc_1.getTodos);
 //Route POST todo/
 //@desc add todo
 //access public
