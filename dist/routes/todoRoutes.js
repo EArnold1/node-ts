@@ -18,5 +18,5 @@ router.put('/:id', todoFunc_1.updateTodo);
 //Route POST todo/
 //@desc add todo
 //access public
-router.delete('/:id', (req, res) => { });
+router.delete('/:id', todoFunc_1.deleteTodo);
 exports.default = router;

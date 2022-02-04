@@ -44,7 +44,25 @@ export const updateTodo: RequestHandler<{ id: string }> = (req, res, next) => {
 
     TODOS[index].text = updatedText;
 
-    res.status(200).json({ msg: 'Text updated', todos: TODOS });
+    res.status(200).json({ msg: 'Todo updated', todos: TODOS });
+  } catch (err) {
+    res.status(500).json({ msg: 'Server Error' });
+  }
+};
+
+// Delete Todo Function
+export const deleteTodo: RequestHandler<{ id: string }> = (req, res) => {
+  const todoId = req.params.id;
+
+  const index = TODOS.findIndex((todo) => todo.id === todoId);
+
+  try {
+    if (index < 0) {
+      res.status(400).json({ msg: 'Not found' });
+    }
+
+    TODOS.splice(index, 1);
+    res.status(200).json({ msg: 'Todo deleted', todos: TODOS });
   } catch (err) {
     res.status(500).json({ msg: 'Server Error' });
   }
