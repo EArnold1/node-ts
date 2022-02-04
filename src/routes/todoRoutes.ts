@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createTodo, getTodos } from '../controllers/todoFunc';
+import { createTodo, getTodos, updateTodo } from '../controllers/todoFunc';
 
 const router = Router();
 
@@ -16,7 +16,7 @@ router.get('/', getTodos);
 //Route POST todo/
 //@desc add todo
 //access public
-router.put('/:id', (req, res) => {});
+router.put('/:id', updateTodo);
 
 //Route POST todo/
 //@desc add todo

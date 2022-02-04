@@ -22,9 +22,29 @@ export const createTodo: RequestHandler = (req, res, next) => {
   }
 };
 
+// Get Todos Function
 export const getTodos: RequestHandler = (req, res, next) => {
   try {
     res.status(200).json({ todos: TODOS });
+  } catch (err) {
+    res.status(500).json({ msg: 'Server Error' });
+  }
+};
+
+export const updateTodo: RequestHandler<{ id: string }> = (req, res, next) => {
+  const todoId = req.params.id;
+  const updatedText = (req.body as { text: string }).text;
+
+  const index = TODOS.findIndex((todo) => todo.id === todoId);
+
+  try {
+    if (index < 0) {
+      res.status(400).json({ msg: 'Not found' });
+    }
+
+    TODOS[index].text = updatedText;
+
+    res.status(200).json({ msg: 'Text updated', todos: TODOS });
   } catch (err) {
     res.status(500).json({ msg: 'Server Error' });
   }

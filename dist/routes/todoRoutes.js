@@ -14,7 +14,7 @@ router.get('/', todoFunc_1.getTodos);
 //Route POST todo/
 //@desc add todo
 //access public
-router.put('/:id', (req, res) => { });
+router.put('/:id', todoFunc_1.updateTodo);
 //Route POST todo/
 //@desc add todo
 //access public
